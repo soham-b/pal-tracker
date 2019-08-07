@@ -17,9 +17,9 @@ public class TimeEntry {
     private long userId;
 
     @JsonProperty("date")
-    private LocalDate parse;
+    private LocalDate date;
     @JsonProperty("hours")
-    private int i;
+    private int hours;
 
     public long getProjectId() {
         return projectId;
@@ -29,20 +29,20 @@ public class TimeEntry {
         return userId;
     }
 
-    public LocalDate getParse() {
-        return parse;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public int getI() {
-        return i;
+    public int getHours() {
+        return hours;
     }
 
-    public TimeEntry(long timeEntryId, long projectId, long userId, LocalDate parse, int i) {
+    public TimeEntry(long timeEntryId, long projectId, long userId, LocalDate date, int hours) {
         this.timeEntryId = timeEntryId;
         this.projectId = projectId;
         this.userId = userId;
-        this.parse = parse;
-        this.i = i;
+        this.date = date;
+        this.hours = hours;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class TimeEntry {
         return timeEntryId==timeEntry.getId()
                 && projectId == timeEntry.getProjectId()
                 && userId == timeEntry.getUserId()
-                && parse.isEqual(timeEntry.getParse()) && i == timeEntry.getI();
+                && date.isEqual(timeEntry.getDate()) && hours == timeEntry.getHours();
     }
 
     @Override
@@ -64,12 +64,12 @@ public class TimeEntry {
         return super.toString();
     }
 
-    public TimeEntry(long projectId, long userId, LocalDate parse, int i) {
+    public TimeEntry(long projectId, long userId, LocalDate date, int hours) {
 
         this.projectId = projectId;
         this.userId = userId;
-        this.parse = parse;
-        this.i = i;
+        this.date = date;
+        this.hours = hours;
     }
 
     public TimeEntry(){}
