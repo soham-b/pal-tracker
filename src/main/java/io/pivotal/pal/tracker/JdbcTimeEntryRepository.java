@@ -12,6 +12,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 @Repository
 public class JdbcTimeEntryRepository implements TimeEntryRepository {
@@ -27,6 +28,7 @@ public class JdbcTimeEntryRepository implements TimeEntryRepository {
     public JdbcTimeEntryRepository(DataSource dataSource) {
 
         template = new JdbcTemplate(dataSource);
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
 
     @Override
